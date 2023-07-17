@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "RemoteSpark Dashbaord API Docs",
-    "description": "This documentation shows and allows you to use RemoteSpark Dashbaord API's.",
+    "description": "This documentation shows and allows you to use RemoteSpark Dashboard API's.",
     "termsOfService": "https://www.kognitivspark.com/terms",
     "license": {
       "name": "Apache 2.0",
@@ -59,7 +59,7 @@
         }
       }
     },
-    "/dashboard/create": {
+    "/api/create": {
       "post": {
         "tags": [ "Dashboard" ],
         "summary": "Create Dashboard",
@@ -106,7 +106,7 @@
         }
       }
     },
-    "/dashboard/all": {
+    "/api/list": {
       "get": {
         "tags": [ "Dashboard" ],
         "summary": "Get All Dashboards",
@@ -143,7 +143,7 @@
         }
       }
     },
-    "/dashboard/adddata": {
+    "/api/add": {
       "patch": {
         "tags": [ "Dashboard" ],
         "summary": "Add Data to Dashboard",
@@ -173,7 +173,7 @@
         }
       }
     },
-    "/dashboard/updatedata": {
+    "/api/update": {
       "patch": {
         "tags": [ "Dashboard" ],
         "summary": "Update Data to Dashboard",
@@ -203,7 +203,7 @@
         }
       }
     },
-    "/dashboard/delete": {
+    "/api/delete": {
       "delete": {
         "tags": [ "Dashboard" ],
         "summary": "Delete Dashboard",
@@ -257,7 +257,7 @@
         }
       }
     },
-    "/dashboard/get": {
+    "/api/get": {
       "get": {
         "tags": [ "Dashboard" ],
         "summary": "Get Dashboard",
