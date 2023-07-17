@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "RemoteSpark Dashbaord API Docs",
-    "description": "This documentation shows and allows you to use RemoteSpark Dashboard API's.",
+    "description": "This documentation shows and allows you to use RemoteSpark Dashbaord API's.",
     "termsOfService": "https://www.kognitivspark.com/terms",
     "license": {
       "name": "Apache 2.0",
@@ -392,39 +392,39 @@
             "type": "string",
             "default": ""
           }
-        },
-        "DashboardParm": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "default": ""
-            }
+        }
+      },
+      "DashboardParm": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "AddData": {
+        "type": "array",
+        "items": { "$ref": "#/components/schemas/DashboardData" }
+      },
+      "DashBoardDataByID": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": ""
           },
-          "AddData": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/DashboardData" }
+          "Label": {
+            "type": "string",
+            "default": ""
           },
-          "DashBoardDataByID": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "default": ""
-              },
-              "Label": {
-                "type": "string",
-                "default": ""
-              },
-              "Value": {
-                "type": "string",
-                "default": ""
-              },
-              "Unit": {
-                "type": "string",
-                "default": ""
-              }
-            }
+          "Value": {
+            "type": "string",
+            "default": ""
+          },
+          "Unit": {
+            "type": "string",
+            "default": ""
           }
         }
       }
