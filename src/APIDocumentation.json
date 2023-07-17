@@ -26,7 +26,7 @@
       "post": {
         "tags": [ "Authenticate" ],
         "summary": "Login",
-        "description": "Use this endpoint to aquire auth tokens.",
+        "description": "Use this endpoint to aquire auth token.",
         "operationId": "login",
         "parameters": [
           {
