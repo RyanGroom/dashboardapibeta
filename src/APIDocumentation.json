@@ -149,6 +149,22 @@
         "summary": "Add Data to Dashboard",
         "description": "Add data to a specific dashboard.",
         "operationId": "addData",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          }
+        ],
         "requestBody": {
           "description": "Request body",
           "content": {
@@ -177,8 +193,24 @@
       "patch": {
         "tags": [ "Dashboard" ],
         "summary": "Update Data to Dashboard",
-        "description": "Add data to a specific dashboard.",
-        "operationId": "addData",
+        "description": "Update data to a specific dashboard.",
+        "operationId": "updateData",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          }
+        ],
         "requestBody": {
           "description": "Request body",
           "content": {
