@@ -239,7 +239,7 @@
       "delete": {
         "tags": [ "Dashboard" ],
         "summary": "Delete Data to Dashboard",
-        "description": "Delete data to a specific dashboard.",
+        "description": "Delete data in a specific dashboard.",
         "operationId": "deleteData",
         "parameters": [
           {
