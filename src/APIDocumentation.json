@@ -10,7 +10,7 @@
     },
     "version": "1.0.1"
   },
-  "servers": [ { "url": "https://dashboardapi.kognitivspark.net" } ],
+  "servers": [ { "url": "https://rsbackend.azure-api.net" } ],
   "tags": [
     {
       "name": "Authenticate",
