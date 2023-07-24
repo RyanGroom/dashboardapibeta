@@ -814,6 +814,39 @@
             "default": ""
           }
         }
+      },
+      "Folder": {
+        "type": "object",
+        "properties": {
+          "ParentFolder": {
+            "type": "string",
+            "default": ""
+          },
+          "FolderName": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "UploadData": {
+        "type": "object",
+        "properties": {
+          "FolderName": {
+            "type": "string",
+            "default": ""
+          },
+          "ParentFolder": {
+            "type": "string",
+            "default": ""
+          },
+          "Files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        }
       }
     }
   }
