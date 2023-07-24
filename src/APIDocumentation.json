@@ -19,6 +19,10 @@
     {
       "name": "Dashboard",
       "description": "API's to create, update, and fetch dashboards."
+    },
+    {
+      "name": "Content",
+      "description": "API's to create, update, and fetch dashboards."
     }
   ],
   "paths": {
@@ -391,7 +395,7 @@
       }
     },
 
-    "/org/createFolder": {
+    "/api/content/createfolder": {
       "post": {
         "tags": [ "Content" ],
         "summary": "Create Folder",
@@ -444,7 +448,7 @@
         }
       }
     },
-    "/org/allfolders": {
+    "/api/content/listfolders": {
       "get": {
         "tags": [ "Content" ],
         "summary": "Get All Organization Gallery Folders",
@@ -484,59 +488,7 @@
         }
       }
     },
-    "/org/folder": {
-      "delete": {
-        "tags": [ "Content" ],
-        "summary": "Delete Folder",
-        "description": "Delete folder and all its content from organization gallery",
-        "operationId": "deleteFolder",
-        "parameters": [
-          {
-            "name": "x-management-key",
-            "in": "header",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "x-auth-token",
-            "in": "header",
-            "required": true,
-            "explode": false,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "Name/ID",
-            "in": "query",
-            "description": "Folder Name/ID",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Operation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseString" }
-              }
-            }
-          },
-          "300": {
-            "description": "Ambiguous Request"
-          },
-          "400": {
-            "description": "Missing Request Data"
-          },
-          "404": {
-            "description": "Recources Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+    "/api/content/getfolderbyname": {
       "get": {
         "tags": [ "Content" ],
         "summary": "Get Folder",
@@ -558,9 +510,9 @@
             "schema": { "type": "string" }
           },
           {
-            "name": "Name/ID",
+            "name": "Name",
             "in": "query",
-            "description": "Folder Name/ID",
+            "description": "Folder Name",
             "required": true,
             "explode": true,
             "schema": { "type": "string" }
@@ -590,12 +542,12 @@
         }
       }
     },
-    "/org/item": {
-      "delete": {
+    "/api/content/getfolderbyid": {
+      "get": {
         "tags": [ "Content" ],
-        "summary": "Delete Specific Item",
-        "description": "Delete a specific item in organization gallery",
-        "operationId": "deleteItem",
+        "summary": "Get Folder",
+        "description": "Get a specific folder from organization gallery",
+        "operationId": "getFolder",
         "parameters": [
           {
             "name": "x-management-key",
@@ -612,9 +564,9 @@
             "schema": { "type": "string" }
           },
           {
-            "name": "Name/ID",
+            "name": "ID",
             "in": "query",
-            "description": "Item Name/ID",
+            "description": "ID",
             "required": true,
             "explode": true,
             "schema": { "type": "string" }
@@ -625,9 +577,12 @@
             "description": "Successful Operation",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseString" }
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
               }
             }
+          },
+          "204": {
+            "description": "No Content"
           },
           "300": {
             "description": "Ambiguous Request"
@@ -635,16 +590,13 @@
           "400": {
             "description": "Missing Request Data"
           },
-          "404": {
-            "description": "Recources Not Found"
-          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/org/upload": {
+    "/api/content/uploaditem": {
       "post": {
         "tags": [ "Content" ],
         "summary": "Upload Data to Organization Gallery",
@@ -696,158 +648,320 @@
           }
         }
       }
-    }
+    },
+    "/api/content/deletefolderbyname": {
+      "delete": {
+        "tags": [ "Content" ],
+        "summary": "Delete Folder by Name",
+        "description": "Delete a specific folder from organization gallery",
+        "operationId": "deleteFolderbyName",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "Name",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/content/deletefolderbyid": {
+      "delete": {
+        "tags": [ "Content" ],
+        "summary": "Delete Folder by ID",
+        "description": "Delete a specific folder from organization gallery",
+        "operationId": "deleteFolderbyID",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "description": "ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/content/itembyid": {
+      "delete": {
+        "tags": [ "Content" ],
+        "summary": "Delete Item by ID",
+        "description": "Delete a specific item from organization gallery",
+        "operationId": "deleteItembyID",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "description": "ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
 
-  },
-  "components": {
-    "schemas": {
-      "ResponseString": {
-        "type": "object",
-        "properties": {
-          "returnStatusCode": {
-            "type": "integer",
-            "format": "int64",
-            "example": 200
-          },
-          "returnCode": { "type": "string" },
-          "payLoad": { "type": "string" },
-          "message": { "type": "string" },
-          "severity": { "type": "integer" }
-        }
-      },
-      "ResponseObject": {
-        "type": "object",
-        "properties": {
-          "returnStatusCode": {
-            "type": "integer",
-            "format": "int64",
-            "example": 200
-          },
-          "returnCode": { "type": "string" },
-          "payLoad": { "type": "object" },
-          "message": { "type": "string" },
-          "severity": { "type": "integer" }
-        }
-      },
-      "Login": {
-        "type": "object",
-        "properties": {
-          "EmailAddress": {
-            "type": "string",
-            "default": ""
-          },
-          "Password": {
-            "type": "string",
-            "default": ""
+
+    "components": {
+      "schemas": {
+        "ResponseString": {
+          "type": "object",
+          "properties": {
+            "returnStatusCode": {
+              "type": "integer",
+              "format": "int64",
+              "example": 200
+            },
+            "returnCode": { "type": "string" },
+            "payLoad": { "type": "string" },
+            "message": { "type": "string" },
+            "severity": { "type": "integer" }
           }
-        }
-      },
-      "DashboardData": {
-        "type": "object",
-        "properties": {
-          "Label": {
-            "type": "string",
-            "default": ""
-          },
-          "Value": {
-            "type": "string",
-            "default": ""
-          },
-          "Unit": {
-            "type": "string",
-            "default": ""
+        },
+        "ResponseObject": {
+          "type": "object",
+          "properties": {
+            "returnStatusCode": {
+              "type": "integer",
+              "format": "int64",
+              "example": 200
+            },
+            "returnCode": { "type": "string" },
+            "payLoad": { "type": "object" },
+            "message": { "type": "string" },
+            "severity": { "type": "integer" }
           }
-        }
-      },
-      "Dashboard": {
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "default": ""
-          },
-          "Data": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/DashboardData" }
-          }
-        }
-      },
-      "DashboardEmpty": {
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      },
-      "DashboardParm": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      },
-      "AddData": {
-        "type": "array",
-        "items": { "$ref": "#/components/schemas/DashboardData" }
-      },
-      "DashBoardDataByID": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "default": ""
-          },
-          "Label": {
-            "type": "string",
-            "default": ""
-          },
-          "Value": {
-            "type": "string",
-            "default": ""
-          },
-          "Unit": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      },
-      "Folder": {
-        "type": "object",
-        "properties": {
-          "ParentFolder": {
-            "type": "string",
-            "default": ""
-          },
-          "FolderName": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      },
-      "UploadData": {
-        "type": "object",
-        "properties": {
-          "FolderName": {
-            "type": "string",
-            "default": ""
-          },
-          "ParentFolder": {
-            "type": "string",
-            "default": ""
-          },
-          "Files": {
-            "type": "array",
-            "items": {
+        },
+        "Login": {
+          "type": "object",
+          "properties": {
+            "EmailAddress": {
               "type": "string",
-              "format": "binary"
+              "default": ""
+            },
+            "Password": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "DashboardData": {
+          "type": "object",
+          "properties": {
+            "Label": {
+              "type": "string",
+              "default": ""
+            },
+            "Value": {
+              "type": "string",
+              "default": ""
+            },
+            "Unit": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "Dashboard": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "default": ""
+            },
+            "Data": {
+              "type": "array",
+              "items": { "$ref": "#/components/schemas/DashboardData" }
+            }
+          }
+        },
+        "DashboardEmpty": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "DashboardParm": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "AddData": {
+          "type": "array",
+          "items": { "$ref": "#/components/schemas/DashboardData" }
+        },
+        "DashBoardDataByID": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "default": ""
+            },
+            "Label": {
+              "type": "string",
+              "default": ""
+            },
+            "Value": {
+              "type": "string",
+              "default": ""
+            },
+            "Unit": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "Folder": {
+          "type": "object",
+          "properties": {
+            "ParentFolder": {
+              "type": "string",
+              "default": ""
+            },
+            "FolderName": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "UploadData": {
+          "type": "object",
+          "properties": {
+            "FolderName": {
+              "type": "string",
+              "default": ""
+            },
+            "ParentFolder": {
+              "type": "string",
+              "default": ""
+            },
+            "Files": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "binary"
+              }
             }
           }
         }
       }
     }
   }
-}
