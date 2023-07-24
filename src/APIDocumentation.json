@@ -389,7 +389,315 @@
           }
         }
       }
+    },
+
+    "/org/createFolder": {
+      "post": {
+        "tags": [ "Content" ],
+        "summary": "Create Folder",
+        "description": "Create new Folder in Organization gallery",
+        "operationId": "createFolder",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "description": "Request Body for Creating New Folder",
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/Folder" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseString" }
+              }
+            }
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data, Bad Request"
+          },
+          "404": {
+            "description": "Recources Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/org/allfolders": {
+      "get": {
+        "tags": [ "Content" ],
+        "summary": "Get All Organization Gallery Folders",
+        "description": "View all the folders and their content in the Organization Gallery",
+        "operationId": "getOrgFolders",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/org/folder": {
+      "delete": {
+        "tags": [ "Content" ],
+        "summary": "Delete Folder",
+        "description": "Delete folder and all its content from organization gallery",
+        "operationId": "deleteFolder",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "Name/ID",
+            "in": "query",
+            "description": "Folder Name/ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseString" }
+              }
+            }
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "404": {
+            "description": "Recources Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [ "Content" ],
+        "summary": "Get Folder",
+        "description": "Get a specific folder from organization gallery",
+        "operationId": "getFolder",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "Name/ID",
+            "in": "query",
+            "description": "Folder Name/ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseObject" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/org/item": {
+      "delete": {
+        "tags": [ "Content" ],
+        "summary": "Delete Specific Item",
+        "description": "Delete a specific item in organization gallery",
+        "operationId": "deleteItem",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "Name/ID",
+            "in": "query",
+            "description": "Item Name/ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseString" }
+              }
+            }
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "404": {
+            "description": "Recources Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/org/upload": {
+      "post": {
+        "tags": [ "Content" ],
+        "summary": "Upload Data to Organization Gallery",
+        "description": "Upload Data to a specific folder in organization gallery.",
+        "operationId": "upload",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for uploading data",
+          "content": {
+            "multipart/form-data": { "schema": { "$ref": "#/components/schemas/UploadData" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseString" }
+              }
+            }
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Request Data"
+          },
+          "404": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
+
   },
   "components": {
     "schemas": {
