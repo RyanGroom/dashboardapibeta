@@ -446,7 +446,7 @@
         }
       }
     },
-    "/api/content/listfolders": {
+    "/api/content/list": {
       "get": {
         "tags": [ "Content" ],
         "summary": "Get All Organization Gallery Folders",
@@ -486,61 +486,7 @@
         }
       }
     },
-    "/api/content/getfolderbyname": {
-      "get": {
-        "tags": [ "Content" ],
-        "summary": "Get Folder",
-        "description": "Get a specific folder from organization gallery",
-        "operationId": "getFolder",
-        "parameters": [
-          {
-            "name": "x-management-key",
-            "in": "header",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "x-auth-token",
-            "in": "header",
-            "required": true,
-            "explode": false,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "Name",
-            "in": "query",
-            "description": "Folder Name",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Operation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseObject" }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "300": {
-            "description": "Ambiguous Request"
-          },
-          "400": {
-            "description": "Missing Request Data"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/content/getfolderbyid": {
+    "/api/content/foldercontent": {
       "get": {
         "tags": [ "Content" ],
         "summary": "Get Folder",
@@ -594,7 +540,7 @@
         }
       }
     },
-    "/api/content/uploaditem": {
+    "/api/content/upload": {
       "post": {
         "tags": [ "Content" ],
         "summary": "Upload Data to Organization Gallery",
@@ -647,120 +593,12 @@
         }
       }
     },
-    "/api/content/deletefolderbyname": {
-      "delete": {
-        "tags": [ "Content" ],
-        "summary": "Delete Folder by Name",
-        "description": "Delete a specific folder from organization gallery",
-        "operationId": "deleteFolderbyName",
-        "parameters": [
-          {
-            "name": "x-management-key",
-            "in": "header",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "x-auth-token",
-            "in": "header",
-            "required": true,
-            "explode": false,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "Name",
-            "in": "query",
-            "description": "Name",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Operation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseObject" }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "300": {
-            "description": "Ambiguous Request"
-          },
-          "400": {
-            "description": "Missing Request Data"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/content/deletefolderbyid": {
+    "/api/content/deletefolder": {
       "delete": {
         "tags": [ "Content" ],
         "summary": "Delete Folder by ID",
         "description": "Delete a specific folder from organization gallery",
         "operationId": "deleteFolderbyID",
-        "parameters": [
-          {
-            "name": "x-management-key",
-            "in": "header",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "x-auth-token",
-            "in": "header",
-            "required": true,
-            "explode": false,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "ID",
-            "in": "query",
-            "description": "ID",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Operation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseObject" }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "300": {
-            "description": "Ambiguous Request"
-          },
-          "400": {
-            "description": "Missing Request Data"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/content/itembyid": {
-      "delete": {
-        "tags": [ "Content" ],
-        "summary": "Delete Item by ID",
-        "description": "Delete a specific item from organization gallery",
-        "operationId": "deleteItembyID",
         "parameters": [
           {
             "name": "x-management-key",
