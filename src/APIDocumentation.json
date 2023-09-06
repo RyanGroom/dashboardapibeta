@@ -339,6 +339,68 @@
         }
       }
     },
+    "/api/deletedata": {
+      "delete": {
+        "tags": [ "Dashboard" ],
+        "summary": "Delete Dashboard Data",
+        "description": "Delete Dashboard Data",
+        "operationId": "deleteDashboardData",
+        "parameters": [
+          {
+            "name": "x-management-key",
+            "in": "header",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "x-auth-token",
+            "in": "header",
+            "required": true,
+            "explode": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Dashboard ID",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "label",
+            "in": "query",
+            "description": "Data name",
+            "required": true,
+            "explode": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ResponseString" }
+              }
+            }
+          },
+          "300": {
+            "description": "Ambiguous Request"
+          },
+          "400": {
+            "description": "Missing Data, Bad Request"
+          },
+          "404": {
+            "description": "Dashboard not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/get": {
       "get": {
         "tags": [ "Dashboard" ],
