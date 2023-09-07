@@ -239,53 +239,7 @@
         }
       }
     },
-    "/api/remove": {
-      "delete": {
-        "tags": [ "Dashboard" ],
-        "summary": "Delete Data to Dashboard",
-        "description": "Delete data in a specific dashboard.",
-        "operationId": "deleteData",
-        "parameters": [
-          {
-            "name": "x-management-key",
-            "in": "header",
-            "required": true,
-            "explode": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "name": "x-auth-token",
-            "in": "header",
-            "required": true,
-            "explode": false,
-            "schema": { "type": "string" }
-          }
-        ],
-        "requestBody": {
-          "description": "Request body",
-          "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/DashBoardDataByID" } }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Operation",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/ResponseString" }
-              }
-            }
-          },
-          "400": {
-            "description": "Missing Request Data, Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/delete": {
+   "/api/delete": {
       "delete": {
         "tags": [ "Dashboard" ],
         "summary": "Delete Dashboard",
